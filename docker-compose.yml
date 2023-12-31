@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URI=postgresql://user:password@db/nginx_logs
+    depends_on:
+      - db
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=nginx_logs
+    expose:
+      - "5432"
