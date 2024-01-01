@@ -7,6 +7,4 @@ COPY ./backend /backend
 
 WORKDIR /backend
 
-RUN echo "Go to stdout you filthy bastard"
-
 CMD ["python3", "server.py"]

@@ -1,12 +1,14 @@
 from flask import Flask, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-
+from flask_cors import CORS
 from model import Log, Base
 from helpers import insert_mock_data
 import logging, sys, os, time
 
 app = Flask(__name__)
+CORS(app)
+
 logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
 DATABASE_URI = os.environ.get('DATABASE_URI') 
