@@ -6,6 +6,10 @@ from model import Log, Base
 from helpers import insert_mock_data
 import logging, sys, os, time
 
+while True:
+    continue
+
+
 app = Flask(__name__)
 CORS(app)
 
@@ -21,7 +25,7 @@ Session = scoped_session(session_factory)
 @app.route('/logs', methods=['GET'])
 def get_logs():
     logs = Session().query(Log).all()
-    log_list = [dict(id=log.id, ip=log.ip, datetime=log.datetime, 
+    log_list = [dict(ip=log.ip, datetime=log.datetime, 
                      request_method=log.request_method, path=log.path, 
                      status=log.status, size=log.size, 
                      referrer=log.referrer, user_agent=log.user_agent) for log in logs]
@@ -34,7 +38,6 @@ def index():
     return "Hello, world"
 
 if __name__ == '__main__':
-
     time.sleep(2) # wait for postgres server 
      
     Base.metadata.create_all(engine)

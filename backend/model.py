@@ -9,9 +9,8 @@ class Base(DeclarativeBase):
 class Log(Base):
     __tablename__ = 'logs'
 
-    id: int                         = Column(Integer, primary_key=True)
-    ip: Optional[str]               = Column(String(255))
-    datetime: Optional[DateTime]    = Column(DateTime)
+    ip: Optional[str]               = Column(String(255), primary_key=True)
+    datetime: Optional[DateTime]    = Column(DateTime, primary_key=True)
     request_method: Optional[str]   = Column(String(50))
     path: Optional[str]             = Column(Text)
     status: Optional[int]           = Column(Integer)
